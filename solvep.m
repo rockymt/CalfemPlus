@@ -5,19 +5,22 @@
 % PURPOSE
 %  Solve static FE-equations considering boundary conditions 
 %  with penalty method.
-%  This function can handle multipoint Constraints.
+%  This function can handle multipoint constraints.
 % INPUT: K : global stiffness matrix, dim(K)= nd x nd
 %        f : global load vector, dim(f)= nd x 1
 %
 %        bc : boundary condition matrix
-%             boundary condition with form of 
-%             "u1=d_p1+u2*d_p2+u3*d_p3+..."
-%             p1, p2, p3...------ the dof index of d
-%             u1, u2, u3...------ the coefficients
-%            bc should be [p1 u1;
+%             If boundary conditions are in form of "u0 = d_p0" 
+%             and "u1 = d_p1+u2*d_p2+u3*d_p3+..." etc.
+%             where
+%             p0, p1, p2, p3...------ the dof index of d
+%             u0, u1, u2, u3...------ the coefficients
+%            bc should be [p0 u0;
+%                          p1 u1;
 %                         -p2 u2;
 %                         -p3 u3;
 %                           ...];
+%            negative index means a multipoint constraint follows
 % OUTPUT:  a : solution including boundary values
 %          Q : reaction force vector
 %              dim(a)=dim(Q)= nd x 1, nd : number of dof's

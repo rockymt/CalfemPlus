@@ -1,4 +1,4 @@
-function [Ke]=quad1De(ep);
+function [Ke]=quad1De(ep)
 % Ke=spring1e(ep)
 %-------------------------------------------------------------
 % PURPOSE

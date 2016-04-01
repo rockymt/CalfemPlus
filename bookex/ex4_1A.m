@@ -1,4 +1,4 @@
-% example ex3_3
+% example ex4_1A
 %----------------------------------------------------------------
 % LAST MODIFIED: Yan LIU  2016-03-29
 % Copyright (c)  School of Civil Engineering.
@@ -9,41 +9,54 @@
 % TR Chandrupatla & AD Belegundu
 % Introduction to finite elements in engineering 
 %----------------------------------------------------------------
- 
+
+
 %----- Topology matrix Edof -------------------------------------
 
- Edof=[1 1 2;
-       2 2 3];
+ EDof=[ 1   1   2   3   4;
+        2   5   6   3   4;
+        3   1   2   5   6;
+        4   7   8   5   6];
+	   
+%----- Element coordinates --------------------------------------
+
+ Ex=[ 0   40;
+     40   40;
+      0   40;
+      0   40];
+ Ey=[ 0    0;
+     30    0;
+      0   30;
+     30   30];      
  
 %----- Stiffness matrix K and load vector f ---------------------
 
- K=zeros(3,3) 
- f=zeros(3,1);  f(2)=100
+ K=zeros(8,8)
+ f=zeros(8,1); 
+ f(3)=20000; f(6)=-25000
  
-%----- Element stiffness matrices  ------------------------------
- E=30e6; A1=5.25; A2=3.75; L=12; rhog=0.2836 
- ep1=E*A1/L;  ep2=E*A2/L;
- Ke1=spring1e(ep1)
- Ke2=spring1e(ep2)
- fe1=rhog*A1*L/2*[1 1]'
- fe2=rhog*A2*L/2*[1 1]'
+%----- Element properties  --------------------------------------
+ E=29.5e6; A=1.0;
+ ep=[E A]
+ 
 %----- Assemble Ke into K ---------------------------------------
 
- [K,f]=assem(Edof(1,:),K,Ke1,f,fe1)
- [K,f]=assem(Edof(2,:),K,Ke2,f,fe2) 
+ for i = 1:4
+   Ke=bar2e(Ex(i,:),Ey(i,:),ep) %Element stiffness matrices
+   [K]=assem(EDof(i,:),K,Ke);
+ end
  
 %----- Solve the system of equations ----------------------------
 
- bc= [1 0];   
+ bc= [1 0; 2 0;
+      4 0;
+	  7 0; 8 0];   
  [a,r]=solveq(K,f,bc)
 
 %----- Element forces -------------------------------------------
-
- ed1=extract(Edof(1,:),a)
- ed2=extract(Edof(2,:),a)
-
- sigma1=spring1s(ep1,ed1)/A1
- sigma2=spring1s(ep2,ed2)/A2
-
-
+ for i = 1:4
+	 ed(i,:)=extract(EDof(i,:),a);
+	 N(i)=bar2s(Ex(i,:),Ey(i,:),ep,ed(i,:));
+	 sigma(i)=N(i)/A;
+ end
 %---------------------------- end -------------------------------

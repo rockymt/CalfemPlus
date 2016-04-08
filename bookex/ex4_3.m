@@ -31,7 +31,8 @@ ElTp = 'bar3e';
  
 %----- Stiffness matrix K and load vector f ---------------------
  nDof=max(max(GDof))
- K=zeros(nDof,nDof)
+% K=zeros(nDof,nDof)
+ K=sparse(nDof,nDof)
  f=zeros(nDof,1); 
  f(GDof(2,2))=-3000
  

@@ -26,23 +26,23 @@
     case 'bar2e'
 	  dofn1 = [El(:,2)*6-5 El(:,2)*6-4];
 	  dofn2 = [El(:,3)*6-5 El(:,3)*6-4];
-	  dofn1 = El(:,2)*6+[-5 -4];
-	  dofn2 = El(:,3)*6+[-5 -4];
 	  EDofR = [El(:,1) dofn1 dofn2];
 	  GDof([dofn1 dofn2])=1;
 	case 'bar3e'
-      dofn1 = El(:,2)*6+[-5 -4 -3];
-	  dofn2 = El(:,3)*6+[-5 -4 -3];
+      dofn1 = [El(:,2)*6-5 El(:,2)*6-4 El(:,2)*6-3];
+	  dofn2 = [El(:,3)*6-5 El(:,3)*6-4 El(:,3)*6-3];
 	  EDofR = [El(:,1) dofn1 dofn2];
 	  GDof([dofn1 dofn2])=1;
 	case 'beam2e'
-      dofn1 = El(:,2)*6+[-5 -4 0];
-	  dofn2 = El(:,3)*6+[-5 -4 0];
+      dofn1 = [El(:,2)*6-5 El(:,2)*6-4 El(:,2)*6];
+	  dofn2 = [El(:,3)*6-5 El(:,3)*6-4 El(:,3)*6];
 	  EDofR = [El(:,1) dofn1 dofn2];
 	  GDof([dofn1 dofn2])=1;
 	case 'beam3e'
-      dofn1 = El(:,2)*6+[-5 -4 -3 -2 -1 0];
-	  dofn2 = El(:,3)*6+[-5 -4 -3 -2 -1 0];
+      dofn1 = [El(:,2)*6-5 El(:,2)*6-4 El(:,2)*6-3 ...
+          El(:,2)*6-2 El(:,2)*6-1 El(:,2)*6];
+	  dofn2 = [El(:,3)*6-5 El(:,3)*6-4 El(:,3)*6-3 ...
+          El(:,3)*6-2 El(:,3)*6-1 El(:,3)*6];
 	  EDofR = [El(:,1) dofn1 dofn2];
 	  GDof([dofn1 dofn2])=1;
 	otherwise

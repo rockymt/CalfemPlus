@@ -52,10 +52,10 @@ ElTp = 'beam2e';
  [a,r]=solveq(K,f,bc)
 
 
-%----- Section forces -------------------------------------------
+ %----- Section forces -------------------------------------------
  for i = 1:2
 	Ed(i,:)=extract(EDof(i,:),a);
-	es1=beam2s(Ex(i,:),Ey(i,:),ep,Ed(i,:),eq(i,:),21); 
+	[es{i} edi{i}]=beam2s(Ex(i,:),Ey(i,:),ep,Ed(i,:),eq(i,:),21); 
  end
  %----- Draw deformed frame ---------------------------------------
  
@@ -70,47 +70,5 @@ ElTp = 'beam2e';
  for i = 1:2
 	eldisp2(Ex(i,:),Ey(i,:),Ed(i,:),plotpar,sfac);
  end
-
- axis([-1.5 7.5 -0.5 5.5]); 
- pltscalb2(sfac,[1e-2 0.5 0]);
- axis([-1.5 7.5 -0.5 5.5]);
  title('displacements')
  
-%----- Draw normal force diagram --------------------------------
- 
- figure(2)
- plotpar=[2 1];
- sfac=scalfact2(ex1,ey1,es1(:,1),0.2);
- eldia2(ex1,ey1,es1(:,1),plotpar,sfac);
- eldia2(ex2,ey2,es2(:,1),plotpar,sfac);
- eldia2(ex3,ey3,es3(:,1),plotpar,sfac);
- axis([-1.5 7.5 -0.5 5.5]);
- pltscalb2(sfac,[3e4 1.5 0]);
- title('normal force')
-
-%----- Draw shear force diagram ---------------------------------
- 
- figure(3)
- plotpar=[2 1];
- sfac=scalfact2(ex3,ey3,es3(:,2),0.2);
- eldia2(ex1,ey1,es1(:,2),plotpar,sfac);
- eldia2(ex2,ey2,es2(:,2),plotpar,sfac);
- eldia2(ex3,ey3,es3(:,2),plotpar,sfac);
- axis([-1.5 7.5 -0.5 5.5]);
- pltscalb2(sfac,[3e4 0.5 0]);
- title('shear force') 
-
-%----- Draw moment diagram --------------------------------------
- 
- figure(4)
- plotpar=[2 1];
- sfac=scalfact2(ex3,ey3,es3(:,3),0.2);
- eldia2(ex1,ey1,es1(:,3),plotpar,sfac);
- eldia2(ex2,ey2,es2(:,3),plotpar,sfac);
- eldia2(ex3,ey3,es3(:,3),plotpar,sfac);
- axis([-1.5 7.5 -0.5 5.5]);
- pltscalb2(sfac,[3e4 0.5 0]);
- title('moment') 
-
-%------------------------ end -----------------------------------
- echo off

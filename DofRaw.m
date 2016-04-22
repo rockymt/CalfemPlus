@@ -45,6 +45,18 @@
           El(:,3)*6-2 El(:,3)*6-1 El(:,3)*6];
 	  EDofR = [El(:,1) dofn1 dofn2];
 	  GDof([dofn1 dofn2])=1;
+	case 'plante'
+      dofn1 = [El(:,2)*6-5 El(:,2)*6-4];
+	  dofn2 = [El(:,3)*6-5 El(:,3)*6-4];
+	  dofn3 = [El(:,4)*6-5 El(:,4)*6-4];
+	  EDofR = [El(:,1) dofn1 dofn2 dofn3];
+	  GDof([dofn1 dofn2 dofn3])=1;
+	case 'flw2te'
+      dofn1 = [El(:,2)*6-5];
+	  dofn2 = [El(:,3)*6-5];
+	  dofn3 = [El(:,4)*6-5];
+	  EDofR = [El(:,1) dofn1 dofn2 dofn3];
+	  GDof([dofn1 dofn2 dofn3])=1;
 	otherwise
 	 'Your element type is undefined'
   end  

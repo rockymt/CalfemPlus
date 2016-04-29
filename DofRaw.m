@@ -17,7 +17,7 @@
 %          GDof : raw global dofs vector
 %-------------------------------------------------------------
 
-% LAST MODIFIED: Yan LIU  2016-03-13
+% LAST MODIFIED: Yan LIU  2016-04-23
 % Copyright (c)  School of Civil Engineering.
 %                Ludong University
 %-------------------------------------------------------------
@@ -45,7 +45,7 @@
           El(:,3)*6-2 El(:,3)*6-1 El(:,3)*6];
 	  EDofR = [El(:,1) dofn1 dofn2];
 	  GDof([dofn1 dofn2])=1;
-	case 'plante'
+	case {'plante' 'axisyme'}
       dofn1 = [El(:,2)*6-5 El(:,2)*6-4];
 	  dofn2 = [El(:,3)*6-5 El(:,3)*6-4];
 	  dofn3 = [El(:,4)*6-5 El(:,4)*6-4];

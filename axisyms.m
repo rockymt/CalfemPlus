@@ -1,5 +1,26 @@
   function [es,et]=axisyms(er,ez,D,ed)
-
+% [es,et]=axisyms(er,ez,D,ed)
+%-------------------------------------------------------------
+% PURPOSE
+%  Calculate element normal and shear stress for a
+%  triangular axis-symmetric element.
+%
+% INPUT:  er = [r1 r2 r3]         element coordinates
+%         ez = [z1 z2 z3]
+%         D                       constitutive matrix
+%         ed =[u1 u2 ...u6        element displacement vector
+%              ......     ]       one row for each element
+%
+% OUTPUT: es = [ sigr sigz sigtheta taurz   element stress matrix
+%               ......                 ]  one row for each element
+%
+%         et = [ epsr epsz epstheta gamrz   element strain matrix
+%               ......                 ]  one row for each element
+%-------------------------------------------------------------
+% LAST MODIFIED: Yan LIU  2016-04-23
+% Copyright (c)  School of Civil Engineering.
+%                Ludong University
+%------------------------------------------------------------- 
 
   colD=size(D,2);
   ee=zeros(colD,1);

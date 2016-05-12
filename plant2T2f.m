@@ -1,5 +1,42 @@
 function f=plant2T2f(f,TBd,El,EDof,Ex,Ey,ep)
-
+% [f]=plant2T2f(f,TBd,El,EDof,Ex,Ey,ep)
+%-------------------------------------------------------------
+% PURPOSE
+%  Create and assemble traction force.
+%
+% INPUT: f : the input global force vector
+%        TBd :  Each line of matrix TBd contains linear 
+%               distributed load information on one edge of an element 
+%               column 1 the load type: 
+%                1--loads in x and y direction
+%                2--pressure and shear stress(positive if col2-->col3) 
+%               column 2 and 3: the node number of the edge
+%               column 4 and 5：the loads of node on node of column 2
+%               column 6 and 7：the loads of node on node of column 3
+%               example: TBd=[2 1  10  -400 0 -400 0];
+%                        means pressure load 400 acting on the 
+%                        edge of nodes 1 and 10
+%        El : the element connectivity cell or matrix
+%            example:elementNumber nodeNumber
+%                    {[1            n1 n2;
+%                      2            n3 n2;...];
+%                     [5            n6 n3;
+%                      6            n2 n7;...]}
+%        EDof: topology matrix , dim(t)= nie x ned+1
+%                         nie= number of identical elements
+%                         ned= number of element dof's 
+%       Ex,Ey,Ez : element coordinate matrices
+%          Ex=[x1 x2 ...xnen;    one row for each element
+%              ...     ...  ;
+%              nel     ...  ] 
+%         ep = [ptype t ]         ptype: analysis type
+%                                 t: thickness
+% OUTPUT:  f : the output global force vector with traction force
+%-------------------------------------------------------------
+% LAST MODIFIED: Yan LIU  2016-04-23
+% Copyright (c)  School of Civil Engineering.
+%                Ludong University
+%------------------------------------------------------------- 
  TEl = plant2Bd2El(TBd(:,2:end),El);
  for j=1:size(TEl)
     i=TEl(j);

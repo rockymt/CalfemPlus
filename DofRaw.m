@@ -51,6 +51,26 @@
 	  dofn3 = [El(:,4)*6-5 El(:,4)*6-4];
 	  EDofR = [El(:,1) dofn1 dofn2 dofn3];
 	  GDof([dofn1 dofn2 dofn3])=1;
+	case 'plani4e'
+	  dofn1 = [El(:,2)*6-5 El(:,2)*6-4];
+	  dofn2 = [El(:,3)*6-5 El(:,3)*6-4];
+	  dofn3 = [El(:,4)*6-5 El(:,4)*6-4];
+	  dofn4 = [El(:,5)*6-5 El(:,5)*6-4];
+	  EDofR = [El(:,1) dofn1 dofn2 dofn3 dofn4];
+	  GDof([dofn1 dofn2 dofn3 dofn4])=1;
+	case 'plani8e'
+	  dofn1 = [El(:,2)*6-5 El(:,2)*6-4];
+	  dofn2 = [El(:,3)*6-5 El(:,3)*6-4];
+	  dofn3 = [El(:,4)*6-5 El(:,4)*6-4];
+	  dofn4 = [El(:,5)*6-5 El(:,5)*6-4];
+	  dofn5 = [El(:,6)*6-5 El(:,6)*6-4];
+	  dofn6 = [El(:,7)*6-5 El(:,7)*6-4];
+	  dofn7 = [El(:,8)*6-5 El(:,8)*6-4];
+	  dofn8 = [El(:,9)*6-5 El(:,9)*6-4];
+	  EDofR = [El(:,1) dofn1 dofn2 dofn3 dofn4...
+	  dofn5 dofn6 dofn7 dofn8];
+	  GDof([dofn1 dofn2 dofn3 dofn4...
+	  dofn5 dofn6 dofn7 dofn8])=1;
 	case 'flw2te'
       dofn1 = [El(:,2)*6-5];
 	  dofn2 = [El(:,3)*6-5];

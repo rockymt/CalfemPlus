@@ -1,5 +1,23 @@
   function [Ke,fe]=axisyme(er,ez,D,eq)
-
+% [Ke,fe]=axisyme(er,ez,D,eq)
+%-------------------------------------------------------------
+% PURPOSE
+%  Calculate the stiffness matrix for a triangular 
+%  axis-symmetric element.
+%
+% INPUT:  er = [r1 r2 r3]         element coordinates
+%         ez = [z1 z2 z3]
+%         D                       constitutive matrix
+%         eq = [br;               br: body force r-dir
+%               bz]               bz: body force z-dir
+%
+% OUTPUT: Ke : element stiffness matrix (6 x 6)
+%         fe : equivalent nodal forces (6 x 1)
+%-------------------------------------------------------------
+% LAST MODIFIED: Yan LIU  2016-04-23
+% Copyright (c)  School of Civil Engineering.
+%                Ludong University
+%------------------------------------------------------------- 
   br=0.; bz=0.; if nargin==4;  br=eq(1); bz=eq(2); end
   A=1/2*det([ones(3,1) er' ez']);
   if size(D,2)>4

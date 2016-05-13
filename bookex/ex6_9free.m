@@ -39,7 +39,7 @@
  E=30e6; v=0.25;
  D=hooke(ptype,E,v);
  
-%-----
+%-------- Create and assemble traction force -------------------
  TBd=[2 1  10  -400 0 -400 0;
       2 10 2   -400 0 -400 0];
  f=plant2T2f(f,TBd,El,EDof,Ex,Ey,ep)

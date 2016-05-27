@@ -71,6 +71,13 @@
 	  dofn5 dofn6 dofn7 dofn8];
 	  GDof([dofn1 dofn2 dofn3 dofn4...
 	  dofn5 dofn6 dofn7 dofn8])=1;
+	case 'tetra4e'
+      dofn1 = [El(:,2)*6-5 El(:,2)*6-4 El(:,2)*6-3];
+	  dofn2 = [El(:,3)*6-5 El(:,3)*6-4 El(:,3)*6-3];
+	  dofn3 = [El(:,4)*6-5 El(:,4)*6-4 El(:,4)*6-3];
+	  dofn4 = [El(:,5)*6-5 El(:,5)*6-4 El(:,5)*6-3];
+	  EDofR = [El(:,1) dofn1 dofn2 dofn3 dofn4];
+	  GDof([dofn1 dofn2 dofn3 dofn4])=1;
 	case 'flw2te'
       dofn1 = [El(:,2)*6-5];
 	  dofn2 = [El(:,3)*6-5];

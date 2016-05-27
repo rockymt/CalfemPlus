@@ -38,3 +38,5 @@
   if colD>4 ee([1 2 3 4])=e; else ee=e; end
   et=ee';
   es=(D*ee)';
+  
+  end

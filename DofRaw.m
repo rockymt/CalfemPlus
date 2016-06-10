@@ -84,6 +84,26 @@
 	  dofn3 = [El(:,4)*6-5];
 	  EDofR = [El(:,1) dofn1 dofn2 dofn3];
 	  GDof([dofn1 dofn2 dofn3])=1;
+	case 'flw2i4e'
+      dofn1 = [El(:,2)*6-5];
+	  dofn2 = [El(:,3)*6-5];
+	  dofn3 = [El(:,4)*6-5];
+	  dofn4 = [El(:,5)*6-5];
+	  EDofR = [El(:,1) dofn1 dofn2 dofn3 dofn4];
+	  GDof([dofn1 dofn2 dofn3 dofn4])=1;
+	case 'flw2i8e'
+      dofn1 = [El(:,2)*6-5];
+	  dofn2 = [El(:,3)*6-5];
+	  dofn3 = [El(:,4)*6-5];
+	  dofn4 = [El(:,5)*6-5];
+	  dofn5 = [El(:,6)*6-5];
+	  dofn6 = [El(:,7)*6-5];
+	  dofn7 = [El(:,8)*6-5];
+	  dofn8 = [El(:,9)*6-5];
+	  EDofR = [El(:,1) dofn1 dofn2 dofn3 dofn4...
+	  dofn5 dofn6 dofn7 dofn8];
+	  GDof([dofn1 dofn2 dofn3 dofn4...
+	  dofn5 dofn6 dofn7 dofn8])=1;
 	otherwise
 	 'Your element type is undefined'
   end  

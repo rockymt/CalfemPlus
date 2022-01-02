@@ -58,6 +58,17 @@
 	  dofn4 = [El(:,5)*6-5 El(:,5)*6-4];
 	  EDofR = [El(:,1) dofn1 dofn2 dofn3 dofn4];
 	  GDof([dofn1 dofn2 dofn3 dofn4])=1;
+    case 'plani6e'
+	  dofn1 = [El(:,2)*6-5 El(:,2)*6-4];
+	  dofn2 = [El(:,3)*6-5 El(:,3)*6-4];
+	  dofn3 = [El(:,4)*6-5 El(:,4)*6-4];
+	  dofn4 = [El(:,5)*6-5 El(:,5)*6-4];
+	  dofn5 = [El(:,6)*6-5 El(:,6)*6-4];
+	  dofn6 = [El(:,7)*6-5 El(:,7)*6-4];
+	  EDofR = [El(:,1) dofn1 dofn2 dofn3 dofn4...
+	  dofn5 dofn6];
+	  GDof([dofn1 dofn2 dofn3 dofn4...
+	  dofn5 dofn6])=1;
 	case 'plani8e'
 	  dofn1 = [El(:,2)*6-5 El(:,2)*6-4];
 	  dofn2 = [El(:,3)*6-5 El(:,3)*6-4];
@@ -78,12 +89,86 @@
 	  dofn4 = [El(:,5)*6-5 El(:,5)*6-4 El(:,5)*6-3];
 	  EDofR = [El(:,1) dofn1 dofn2 dofn3 dofn4];
 	  GDof([dofn1 dofn2 dofn3 dofn4])=1;
+    case 'tetra10e'
+      dofn1 = [El(:,2)*6-5 El(:,2)*6-4 El(:,2)*6-3];
+	  dofn2 = [El(:,3)*6-5 El(:,3)*6-4 El(:,3)*6-3];
+	  dofn3 = [El(:,4)*6-5 El(:,4)*6-4 El(:,4)*6-3];
+	  dofn4 = [El(:,5)*6-5 El(:,5)*6-4 El(:,5)*6-3];
+      dofn5 = [El(:,6)*6-5 El(:,6)*6-4 El(:,6)*6-3];
+	  dofn6 = [El(:,7)*6-5 El(:,7)*6-4 El(:,7)*6-3];
+	  dofn7 = [El(:,8)*6-5 El(:,8)*6-4 El(:,8)*6-3];
+	  dofn8 = [El(:,9)*6-5 El(:,9)*6-4 El(:,9)*6-3];
+      dofn9 = [El(:,10)*6-5 El(:,10)*6-4 El(:,10)*6-3];
+	  dofn10 = [El(:,11)*6-5 El(:,11)*6-4 El(:,11)*6-3];
+	  EDofR = [El(:,1) dofn1 dofn2 dofn3 dofn4...
+	  dofn5 dofn6 dofn7 dofn8 dofn9 dofn10];
+	  GDof([dofn1 dofn2 dofn3 dofn4...
+	  dofn5 dofn6 dofn7 dofn8 dofn9 dofn10])=1;
+    case 'soli8e'
+      dofn1 = [El(:,2)*6-5 El(:,2)*6-4 El(:,2)*6-3];
+	  dofn2 = [El(:,3)*6-5 El(:,3)*6-4 El(:,3)*6-3];
+	  dofn3 = [El(:,4)*6-5 El(:,4)*6-4 El(:,4)*6-3];
+	  dofn4 = [El(:,5)*6-5 El(:,5)*6-4 El(:,5)*6-3];
+      dofn5 = [El(:,6)*6-5 El(:,6)*6-4 El(:,6)*6-3];
+	  dofn6 = [El(:,7)*6-5 El(:,7)*6-4 El(:,7)*6-3];
+	  dofn7 = [El(:,8)*6-5 El(:,8)*6-4 El(:,8)*6-3];
+	  dofn8 = [El(:,9)*6-5 El(:,9)*6-4 El(:,9)*6-3];
+	  EDofR = [El(:,1) dofn1 dofn2 dofn3 dofn4...
+	  dofn5 dofn6 dofn7 dofn8];
+	  GDof([dofn1 dofn2 dofn3 dofn4...
+	  dofn5 dofn6 dofn7 dofn8])=1;
 	case 'flw2te'
       dofn1 = [El(:,2)*6-5];
 	  dofn2 = [El(:,3)*6-5];
 	  dofn3 = [El(:,4)*6-5];
 	  EDofR = [El(:,1) dofn1 dofn2 dofn3];
 	  GDof([dofn1 dofn2 dofn3])=1;
+    case 'flw2i4e'
+	  dofn1 = [El(:,2)*6-5];
+	  dofn2 = [El(:,3)*6-5];
+	  dofn3 = [El(:,4)*6-5];
+	  dofn4 = [El(:,5)*6-5];
+	  EDofR = [El(:,1) dofn1 dofn2 dofn3 dofn4];
+	  GDof([dofn1 dofn2 dofn3 dofn4])=1;
+	case 'flw2i6e'
+	  dofn1 = [El(:,2)*6-5];
+	  dofn2 = [El(:,3)*6-5];
+	  dofn3 = [El(:,4)*6-5];
+	  dofn4 = [El(:,5)*6-5];
+	  dofn5 = [El(:,6)*6-5];
+	  dofn6 = [El(:,7)*6-5];
+	  EDofR = [El(:,1) dofn1 dofn2 dofn3 dofn4...
+	  dofn5 dofn6];
+	  GDof([dofn1 dofn2 dofn3 dofn4...
+	  dofn5 dofn6])=1;
+    case 'flw2i8e'
+	  dofn1 = [El(:,2)*6-5];
+	  dofn2 = [El(:,3)*6-5];
+	  dofn3 = [El(:,4)*6-5];
+	  dofn4 = [El(:,5)*6-5];
+	  dofn5 = [El(:,6)*6-5];
+	  dofn6 = [El(:,7)*6-5];
+	  dofn7 = [El(:,8)*6-5];
+	  dofn8 = [El(:,9)*6-5];
+	  EDofR = [El(:,1) dofn1 dofn2 dofn3 dofn4...
+	  dofn5 dofn6 dofn7 dofn8];
+	  GDof([dofn1 dofn2 dofn3 dofn4...
+	  dofn5 dofn6 dofn7 dofn8])=1;
+	case 'flw3tet10e'
+      dofn1 = [El(:,2)*6-5];
+	  dofn2 = [El(:,3)*6-5];
+	  dofn3 = [El(:,4)*6-5];
+	  dofn4 = [El(:,5)*6-5];
+	  dofn5 = [El(:,6)*6-5];
+	  dofn6 = [El(:,7)*6-5];
+	  dofn7 = [El(:,8)*6-5];
+	  dofn8 = [El(:,9)*6-5];
+      dofn9 = [El(:,10)*6-5];
+	  dofn10 = [El(:,11)*6-5];
+	  EDofR = [El(:,1) dofn1 dofn2 dofn3 dofn4...
+	  dofn5 dofn6 dofn7 dofn8 dofn9 dofn10];
+	  GDof([dofn1 dofn2 dofn3 dofn4...
+	  dofn5 dofn6 dofn7 dofn8 dofn9 dofn10])=1;
 	otherwise
 	 'Your element type is undefined'
   end  

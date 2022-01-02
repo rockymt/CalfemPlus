@@ -20,8 +20,8 @@
 % OUTPUT:  EDof: topology matrix , dim(t)= nie x ned+1
 %                         nie= number of identical elements
 %                         ned= number of element dof's 
-%          GDof: the global dofs matrix for nodes in sequence
-%                of natural numbers
+%          GDof: the global dofs number matrix for nodes in 
+%                the sequence of natural numbers
 %                [x1 y1 z1 Mx1 My1 Mz1;
 %                 x2 y2 z2 Mx2 My2 Mz2;...]
 %          Ex,Ey,Ez : element coordinate matrices

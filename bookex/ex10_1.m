@@ -10,7 +10,7 @@
 % TR Chandrupatla & AD Belegundu
 % Introduction to finite elements in engineering 
 %----------------------------------------------------------------
- 
+clear 
 %----- Topology matrix Edof -------------------------------------
  Edof=[1 1 2;
        2 2 3;

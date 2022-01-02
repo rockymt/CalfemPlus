@@ -66,7 +66,7 @@ ElTp = 'beam2e';
  
  figure(1)
  hold on;
- sfac=scalfact2(Ex(1,:),Ey(1,:),Ed(3,:),0.1);
+ sfac=scalfact2(Ex(3,:),Ey(3,:),Ed(3,:),0.1);
  for i = 1:3
      eldraw2(Ex(i,:),Ey(i,:),[2 1 0]);	 
 	 eldisp2(Ex(i,:),Ey(i,:),Ed(i,:),[1 2 1],sfac);

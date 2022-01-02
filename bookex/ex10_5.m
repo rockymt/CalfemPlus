@@ -9,14 +9,14 @@
 % TR Chandrupatla & AD Belegundu
 % Introduction to finite elements in engineering 
 %----------------------------------------------------------------
- 
+clear 
 %-----------Global coordinate matrix-----------------------------
 Coord=[1     0   0;
 	   2     2 1.5;
 	   3     4   0;
 	   4     4   3;
 	   5     0   3];
-Coord(:,2:end)=1e-2*Coord(:,2:end);
+%Coord(:,2:end)=1e-2*Coord(:,2:end);
 %-----------Element connectivity matrix--------------------------	   
 El  = [1  1 3 2;
        2  3 4 2;

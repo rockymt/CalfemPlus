@@ -8,7 +8,7 @@
 %     G"oran Sandberg 1994-03-08 
 %     Karl-Gunnar Olsson 1995-09-29
 %----------------------------------------------------------------
-
+clear
 % ------ Generate the model ------------------------------------------
 %-----------Global coordinate matrix-----------------------------
 Coord=[1     0   0;
@@ -90,7 +90,7 @@ dt=0.002;      T=1;      nev=2;
 % ----- the load ------------------------------------------------
 G=[0 0; 0.15 1; 0.25 0; T 0];        [t,g]=gfunc(G,dt);
 f=zeros(nDof, length(g));            f(GDof(2,1),:)=1000*g;
-fr=sparse(Egv(:,1:nev)'*f);
+fr=Egv(:,1:nev)'*f;
 % ----- reduced system matrices ---------------------------------
 kr=Egv(:,1:nev)'*K*Egv(:,1:nev);
 mr=Egv(:,1:nev)'*M*Egv(:,1:nev);

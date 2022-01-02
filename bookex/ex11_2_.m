@@ -3,7 +3,7 @@
 % PURPOSE 
 %    Structural Dynamics, time integration, reduced system.
 %----------------------------------------------------------------
-
+clear
 % REFERENCES
 %     G"oran Sandberg 1994-03-08 
 %     Karl-Gunnar Olsson 1995-09-29
@@ -86,7 +86,7 @@ for i=5:8;
 end
 
 %---------time step & total times. TWO EIGENVECTORS ARE USED------
-dt=0.002;      T=1;      nev=1;   base=1;
+dt=0.002;      T=1;      nev=1;   base=3;
 % ----- the load ------------------------------------------------
 G=[0 0; 0.15 1; 0.25 0; T 0];        [t,g]=gfunc(G,dt);
 f=zeros(nDof, length(g));            f(GDof(2,1),:)=1000*g;
@@ -112,6 +112,6 @@ grid, xlabel('time (sec)'), ylabel('displacement (m)')
 title('Displacement(time) at the 4th and 11th degree-of-freedom')
 text(0.3,0.017,'solid line = impact point, x-direction')
 text(0.3,0.012,'dashed line = center, horizontal beam, y-direction')
-text(0.3,-0.007,'TWO EIGENVECTORS ARE USED')
+text(0.3,-0.007,'ONE EIGENVECTORS ARE USED')
 
 % ----------------------- end -----------------------------------

@@ -4,7 +4,7 @@
 % Copyright (c)  School of Civil Engineering.
 %                Ludong University
 %-------------------------------------------------------------
-
+clear
 % REFERENCES
 % TR Chandrupatla & AD Belegundu
 % Introduction to finite elements in engineering 

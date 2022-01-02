@@ -9,7 +9,7 @@
 % TR Chandrupatla & AD Belegundu
 % Introduction to finite elements in engineering 
 %----------------------------------------------------------------
- 
+ clear all
 %----- Topology matrix Edof -------------------------------------
 
  Edof=[1 1 2;
@@ -31,6 +31,7 @@
 
  [K,f]=assem(Edof(1,:),K,Ke1,f,fe1)
  [K,f]=assem(Edof(2,:),K,Ke2,f,fe2) 
+ det(K)
  
 %----- Solve the system of equations ----------------------------
 

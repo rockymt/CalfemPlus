@@ -9,7 +9,7 @@
 % TR Chandrupatla & AD Belegundu
 % Introduction to finite elements in engineering 
 %----------------------------------------------------------------
-
+clear;
 %-----------Global coordinate matrix-----------------------------
 Coord=[1     0   8;
 	   2     12  8;

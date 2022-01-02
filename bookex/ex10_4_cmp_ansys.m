@@ -1,6 +1,6 @@
-% example ex6_7
+% example ex10_4
 %----------------------------------------------------------------
-% LAST MODIFIED: Yan LIU  2016-04-20
+% LAST MODIFIED: Yan LIU  2016-06-02
 % Copyright (c)  School of Civil Engineering.
 %                Ludong University
 %-------------------------------------------------------------
@@ -9,18 +9,19 @@
 % TR Chandrupatla & AD Belegundu
 % Introduction to finite elements in engineering 
 %----------------------------------------------------------------
-clear
+ clear
 %-----------Global coordinate matrix-----------------------------
-Coord=[1     3   0;
-	   2     3   2;
-	   3     0   2;
-	   4     0   0]; 
-
+Coord=[1     0   0;
+	   2   0.4   0;
+	   3   0.4   0.15;
+	   4   0.4   0.3;
+	   5     0   0.3]; 
 %-----------Element connectivity matrix--------------------------	   
-El  = [1  1 2 4;
-       2  3 4 2];
+El  = [1  1 2 3;
+       2  5 1 3;
+	   3  5 3 4];
 %-----------Element type----------------------------------------
-ElTp = 'plante';
+ElTp = 'flw2te';
 
 %-------- Extract topology matrix Edof &-----------------------
 %-------- element coordinate matrices -------------------------	   
@@ -30,34 +31,34 @@ ElTp = 'plante';
  nDof=max(max(GDof));
  K=zeros(nDof,nDof);
  f=zeros(nDof,1); 
- f(GDof(2,2))=-1000
  
 %----- Element properties  --------------------------------------
- ptype=1; thick=0.5;
- ep=[ptype thick];
- E=30e6; v=0.25;
- D=hooke(ptype,E,v)
- 
+ ep=1;
+ D=1.5*[1 0;
+        0 1];
+%  h{1}=[0 0 0;0 2.5 1.25; 0 1.25 2.5];
+%  h{2}=h{1}*0
+%  h{3}=[0 0 0;0 2.5 1.25; 0 1.25 2.5];
+ h{1}=[0 0 0;0 3.75 0; 0 0 3.75];
+ h{2}=h{1}*0;
+ h{3}=[0 0 0;0 3.75 0; 0 0 3.75];
+ fe{1}=50*25*0.15/2*[0 1 1]';
+ fe{2}=fe{1}*0;
+ fe{3}=50*25*0.15/2*[0 1 1]';
 %----- Assemble Ke into K ---------------------------------------
-
- for i = 1:2
-   Ke=plante(Ex(i,:),Ey(i,:),ep,D) %Element stiffness matrices
-   [K]=assem(EDof(i,:),K,Ke);
+ K1=K
+ for i = 1:3
+   Ke=flw2te(Ex(i,:),Ey(i,:),ep,D)
+   [K f]=assem(EDof(i,:),K,Ke+h{i},f,fe{i});
  end
  
 %----- Solve the system of equations ----------------------------
-
- bc= [GDof(3,1) 0; GDof(3,2) 0;
-      GDof(1,2) 0;
-	  GDof(4,1) 0; GDof(4,2) 0];   
+ bc= [GDof(4,1) 180; GDof(5,1) 180];   
  [a,r]=solveq(K,f,bc)
 
 %----- Element forces -------------------------------------------
- for i = 1:2
+ for i = 1:3
 	 ed(i,:)=extract(EDof(i,:),a);
-	 [es(i,:) et(i,:)]=plants(Ex(i,:),Ey(i,:),ep,D,ed(i,:));
+	 [es(i,:) et(i,:)]=flw2ts(Ex(i,:),Ey(i,:),D,ed(i,:));
  end
- r(GDof(1,2))
- r(GDof(3,1:2))
- r(GDof(4,1:2))
 %---------------------------- end -------------------------------

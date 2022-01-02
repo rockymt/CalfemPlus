@@ -11,7 +11,7 @@
 % REFERENCES
 % Calfem3.4 /examples/exs7.m 
 %----------------------------------------------------------------
-
+clear
 %-----------Global coordinate matrix-----------------------------
  Coord=[1 0 0;
  	   2 1 0;
@@ -67,7 +67,7 @@
    Ke=bar2e(Ex{2}(i,:),Ey{2}(i,:),ep{2}); 
    K=assem(EDof{2}(i,:),K,Ke);
  end
- spy(K)
+% spy(K)
 %----- Solve the system of equations ----------------------------
  bc= [GDof(1,1)  0; GDof(1,2)  0; GDof(1,6) 0;
 	  GDof(2,1)  0; GDof(2,2)  0; GDof(2,6) 0];   

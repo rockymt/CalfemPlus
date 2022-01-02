@@ -14,7 +14,7 @@
  Edof=[1   3  1;
        2   4  2];
 %----- Stiffness matrix K and load vector f ---------------------
- K=zeros(5); 
+ K=zeros(5,5); 
  f=zeros(5,1);	f(5)=30e3;
 %----- Element stiffness matrices  ------------------------------
  E1=2.0e11;  A1=1.2e-3;  l1=4.5;

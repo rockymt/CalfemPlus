@@ -39,5 +39,6 @@
  sigma2 = quad1Ds(ep,ed2,xi)/A;
  plot(xi,sigma1,'r'); hold on
  plot(xi,sigma2);
- 
+ legend('stress of element 1','stress of element 2')
+ xlabel('\xi');ylabel('\sigma (psi)');grid on
  %---------------------------- end -------------------------------

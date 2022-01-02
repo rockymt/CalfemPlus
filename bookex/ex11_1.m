@@ -8,7 +8,7 @@
 %     G"oran Sandberg 1994-03-08 
 %     Karl-Gunnar Olsson 1995-09-29
 %----------------------------------------------------------------
-
+clear
 % ------ Generate the model ------------------------------------------
 %-----------Global coordinate matrix-----------------------------
 Coord=[1     0   0;
@@ -57,12 +57,12 @@ grid;    title('2-D Frame Structure')
 dt=0.002;    T=1;
 % ------ the load -----------------------------------------------
 G=[0 0; 0.15 1; 0.25 0; T 0];   [t,g]=gfunc(G,dt);
-f=zeros(15, length(g));         f(4,:)=1000*g;
+f=zeros(nDof, length(g));         f(4,:)=1000*g;
 % ------ boundary condition, initial condition ------------------
 bc=[GDof(1,1) 0; GDof(1,2) 0; GDof(1,6) 0; GDof(5,2) 0];
 d0=zeros(15,1);                 v0=zeros(15,1);
 % ------ output parameters --------------------------------------
-ntimes=[0.1:0.1:1];             nhist=[4 11]; 
+ntimes=[0.1:0.1:1];             nhist=[GDof(2,1) GDof(4,2)]; 
 % ------ time integration parameters ----------------------------
 ip=[dt T 0.25 0.5 10 2 ntimes nhist];
 

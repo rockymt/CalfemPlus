@@ -6,8 +6,7 @@
 %-------------------------------------------------------------
 
 % REFERENCES
-% 龙驭球 包世华
-% 结构力学教程
+% Yuqiu Long, Shihua Bao, Structural Mechnaincs(I), Higher Education Press, 2000
 %----------------------------------------------------------------
 clear 
 %-----------Global coordinate matrix-----------------------------

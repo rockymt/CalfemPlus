@@ -9,7 +9,7 @@
 % TR Chandrupatla & AD Belegundu
 % Introduction to finite elements in engineering 
 %----------------------------------------------------------------
-
+clear
 %-----------Global coordinate matrix-----------------------------
 Coord=[1     0   0  0;
 	   2     0   3  0;
@@ -29,7 +29,7 @@ ElTp = 'beam3e';
 
 %-------- Extract topology matrix Edof &-----------------------
 %-------- element coordinate matrices -------------------------
-[EDof,GDof,Ex,Ey,Ez]=ExtractElInfo(El,ElTp,Coord(:,2:end));	   
+[EDof,GDof,Ex,Ey,Ez]=ExtractElInfo(El,ElTp,Coord(:,2:end))
  
 %----- Stiffness matrix K and load vector f ---------------------
  nDof=max(max(GDof));
@@ -44,7 +44,7 @@ ElTp = 'beam3e';
 	 0     0   0   0];
  
 %----- Element properties  --------------------------------------
- E=200E9; G=80E9; A=0.01; Iy=0.001; Iz=0.001; J=0.002;
+ E=200E9; G=80E9; A=0.01; Iy=0.001; Iz=0.001; J=0.002; %nu=0.25
  ep=[E G A Iy Iz J];
  ERefp=[Ref7;
         Ref6;
@@ -70,7 +70,7 @@ ElTp = 'beam3e';
 %----- Section forces -------------------------------------------
  for i = 1:4
 	Ed(i,:)=extract(EDof(i,:),a);
-	es(i,:,:)=beam3s(Ex(i,:),Ey(i,:),Ez(i,:),...
+	es{i}=beam3s(Ex(i,:),Ey(i,:),Ez(i,:),...
 	eo(i,:),ep,Ed(i,:),eq(i,:),21); 	
  end
  
@@ -79,8 +79,8 @@ ElTp = 'beam3e';
  xi = linspace(-1,1,21);
  figure(1)
  for i = 1:4 
-     plot(xi,es(i,:,5),plotflag(i));
-	 MyMaxe(i) = max(abs(es(i,:,5)));	 
+     plot(xi,es{i}(:,5),plotflag(i));
+	 MyMaxe(i) = max(abs(es{i}(:,5)));	 
 	 hold on;
  end
  legend('MyE1','MyE2','MyE3','MyE4')
@@ -88,8 +88,8 @@ ElTp = 'beam3e';
  
  figure(2)
  for i = 1:4 
-     plot(xi,es(i,:,6),plotflag(i));
-	 MzMaxe(i) = max(abs(es(i,:,6)));	 
+     plot(xi,es{i}(:,6),plotflag(i));
+	 MzMaxe(i) = max(abs(es{i}(:,6)));	 
 	 hold on;
  end
  legend('MzE1','MzE2','MzE3','MzE4')

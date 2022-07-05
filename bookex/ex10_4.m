@@ -4,12 +4,11 @@
 % Copyright (c)  School of Civil Engineering.
 %                Ludong University
 %-------------------------------------------------------------
-
 % REFERENCES
 % TR Chandrupatla & AD Belegundu
 % Introduction to finite elements in engineering 
 %----------------------------------------------------------------
- 
+clear 
 %-----------Global coordinate matrix-----------------------------
 Coord=[1     0   0;
 	   2   0.4   0;

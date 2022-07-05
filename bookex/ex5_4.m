@@ -1,6 +1,3 @@
-
-
-	   
 % example ex5_4: bar2d&beam2e
 %----------------------------------------------------------------
 % LAST MODIFIED: Yan LIU  2016-04-06
@@ -39,7 +36,7 @@ clear
 %-------- Extract topology matrix Edof &-----------------------
 %-------- element coordinate matrices -------------------------
 
- [EDof,GDof,Ex,Ey]=ExtractElInfo(El,ElTp,Coord(:,2:end));	   
+ [EDof,GDof,Ex,Ey]=ExtractElInfo(El,ElTp,Coord(:,2:end))	   
  
 %----- Draw the fe-mesh as a check of the model -----------------
  figure(1)

@@ -45,5 +45,4 @@ clear
     ed(i,:)=extract(Edof(i,:),a);
     qflux(i)=-spring1s(ep(i),ed(i,:));
  end
- 
 %---------------------------- end -------------------------------

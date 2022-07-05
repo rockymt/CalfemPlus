@@ -28,7 +28,7 @@ ElTp = 'beam2e';
 %-------- Extract topology matrix Edof &-----------------------
 %-------- element coordinate matrices -------------------------
 
-[EDof,GDof,Ex,Ey]=ExtractElInfo(El,ElTp,Coord(:,2:end));	   
+[EDof,GDof,Ex,Ey]=ExtractElInfo(El,ElTp,Coord(:,2:end))	   
  
 %----- Stiffness matrix K and load vector f ---------------------
  nDof=max(max(GDof));

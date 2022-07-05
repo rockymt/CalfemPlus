@@ -12,7 +12,6 @@
 %
 % OUTPUT:  f :  the new global force vector
 %-------------------------------------------------------------
-
 % LAST MODIFIED: Yan LIU  2016-04-23
 % Copyright (c)  School of Civil Engineering.
 %                Ludong University

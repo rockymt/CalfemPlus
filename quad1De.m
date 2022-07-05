@@ -9,7 +9,6 @@ function [Ke]=quad1De(ep);
 %
 % OUTPUT: Ke :            stiffness matrix, dim(Ke)= 3 x 3
 %-------------------------------------------------------------
-
 % LAST MODIFIED: Yan LIU  2016-03-22
 % Copyright (c)  School of Civil Engineering.
 %                Ludong University

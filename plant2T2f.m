@@ -2,7 +2,7 @@ function f=plant2T2f(f,Tbd,GDof,Coord,thick)
 % [f]=plant2T2f(f,Tbd,GDof,Coord,thick)
 %-------------------------------------------------------------
 % PURPOSE
-%  Create and assemble traction force.
+%  Create and assemble traction force for "plante" and "plani4e" elements.
 %
 % INPUT: f : the input global force vector
 %        Tbd :  The row vector Tbd(1:7) contains linear 
@@ -13,20 +13,19 @@ function f=plant2T2f(f,Tbd,GDof,Coord,thick)
 %                            negtive if tension on right side of Tbd(2)-->Tbd(3)) 
 %                   and shear stress(positive if shear stress along Tbd(2)-->Tbd(3),
 %                                    negtive if shear stress along Tbd(3)-->Tbd(2)) 
-%               Tbd(2:3): the node numbers of the edge
+%               Tbd(2:3): the node numbers along the edge
 %               Tbd(4:5): the loads of node on node of column 2
 %               Tbd(6:7): the loads of node on node of column 3
 %               example: Tbd=[2 1  10  -400 0 -400 0];
 %                        means uniform tension with value 400  
 %                        acting on the edge of nodes 1 and 10.
-%          GDof: the global dofs number matrix for nodes in 
+%          GDof: node-dof connectivity matrix for nodes in 
 %                the sequence of natural numbers
 %                [x1 y1 z1 Mx1 My1 Mz1;
-%                 x2 y2 z2 Mx2 My2 Mz2;...]
+%                 x2 y2 z2 Mx2 My2 Mz2;
+%                                  ...]
 %          Coord : global coordinate matrix
-%                  in sequence of natural numbers
-%                 [x1 (y1 z1);
-%                  x2 (y2 z2);...];
+%                  The first column is the node sequence numbers
 %          thick: thickness
 % OUTPUT:  f : the output global force vector with traction force
 %-------------------------------------------------------------

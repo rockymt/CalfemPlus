@@ -22,9 +22,9 @@ function [Ke,fe]=plani6e(ex,ey,ep,D,eq)
 %         fe : equivalent nodal forces (12 x 1)
 %-------------------------------------------------------------
 % LAST MODIFIED: Yan LIU  2020-02-04
-% Copyright (c)  School of Civil Engineexing.
-%                Ludong Univexsity
-%------------------------------------------------------------- 
+% Copyright (c)  School of Civil Engineering.
+%                Ludong University
+%-------------------------------------------------------------
   ptype=ep(1); t=ep(2);  ir=ep(3);  
 
   if ir==1  

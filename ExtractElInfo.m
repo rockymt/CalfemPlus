@@ -3,31 +3,34 @@
 %-------------------------------------------------------------
 % PURPOSE
 %  Extract the information of elements for calfem:
-%  including the element dofs, global dofs and coordinates.
+%  including the element-dof connectivity, 
+%  node-dof connectivity and element nodal coordinates.
 %
-% INPUT: El : the element connectivity cell or matrix
+% INPUT: El : the element-node connectivity cell or matrix
 %            example:elementNumber nodeNumber
 %                    {[1            n1 n2;
 %                      2            n3 n2;...];
 %                     [5            n6 n3;
 %                      6            n2 n7;...]}
-%        ElTp : the element type cell or matrix
+%        ElTp : the string of element type name in cell or matrix
 %              example:{'beam2e' 'bar2e'}
 %        Coord : global coordinate matrix
 %              in sequence of natural numbers
 %              [x1 (y1 z1);
 %               x2 (y2 z2);...];
-% OUTPUT:  EDof: topology matrix , dim(t)= nie x ned+1
-%                         nie= number of identical elements
-%                         ned= number of element dof's 
-%          GDof: the global dofs number matrix for nodes in 
+% OUTPUT:  EDof: element-dof connectivity matrix(topology matrix)
+%                the first column is the element sequence numbers
+%                dim(t)= nie x ned+1
+%                nie= number of identical elements
+%                ned= number of element dof's 
+%          GDof: node-dof connectivity matrix for nodes in 
 %                the sequence of natural numbers
 %                [x1 y1 z1 Mx1 My1 Mz1;
-%                 x2 y2 z2 Mx2 My2 Mz2;...]
+%                 x2 y2 z2 Mx2 My2 Mz2;
+%                                  ...]
 %          Ex,Ey,Ez : element coordinate matrices
 %          Ex=[x1 x2 ...xnen;    one row for each element
-%              ...     ...  ;
-%              nel     ...  ]  
+%              ...     ...  ]; 
 %              dim= nel x nen ;   nel:number of elemnts
 %-------------------------------------------------------------
 

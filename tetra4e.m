@@ -19,9 +19,9 @@
 %         fe : equivalent nodal forces 
 %-------------------------------------------------------------
 % LAST MODIFIED: Yan LIU  2016-05-24
-% Copyright (c)  School of Civil Engineexing.
-%                Ludong Univexsity
-%------------------------------------------------------------- 
+% Copyright (c)  School of Civil Engineering.
+%                Ludong University
+%-------------------------------------------------------------
   if nargin==4   eq=zeros(3,1);  end
   bx=0.; by=0.; bz=0.; 
   if nargin==4;  bx=eq(1); by=eq(2); bz=eq(3); end

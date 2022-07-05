@@ -21,9 +21,9 @@
 %
 %-------------------------------------------------------------
 % LAST MODIFIED: Yan LIU  2016-05-24
-% Copyright (c)  School of Civil Engineexing.
-%                Ludong Univexsity
-%------------------------------------------------------------- 
+% Copyright (c)  School of Civil Engineering.
+%                Ludong University
+%-------------------------------------------------------------
 
   x14=ex(1)-ex(4); x24=ex(2)-ex(4); x34=ex(3)-ex(4);
   y14=ey(1)-ey(4); y24=ey(2)-ey(4); y34=ey(3)-ey(4);

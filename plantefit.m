@@ -1,4 +1,23 @@
 function [elefit,fit]=plantefit(El,Coord,phi)
+% [elefit,fit]=plantefit(El,Coord,phi)
+%-----------------------------------------------------------------
+% PURPOSE
+%  Nodal Values from Known Constant Element Values 
+%  for "plante" and "flw2te" element.
+%
+% INPUT:  El : the element-node connectivity matrix
+%         Coord : global coordinate matrix
+%                  The first column is the node sequence numbers
+% 
+%         phi: the Constant Element field need to be fitted
+% OUTPUT: elefit:  Nodal Value matrix for elements
+%                  each row presents nodal values for each element
+%         fit: Nodal value vector
+%-----------------------------------------------------------------
+% LAST MODIFIED: Yan LIU  2016-04-20
+% Copyright (c)  School of Civil Engineering.
+%                Ludong University
+%-------------------------------------------------------------
 
 %-----------Element type----------------------------------------
  ElTp = 'flw2te';

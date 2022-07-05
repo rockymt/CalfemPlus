@@ -3,7 +3,7 @@ function [fe]=planttheta(ex,ey,ep,D,epsilon0)
 %-----------------------------------------------------------------
 % PURPOSE
 %  Compute the element load vector induced by initial strain 
-%  for two dimensional bar element.
+%  for "plante" element.
 %
 % INPUT:  ex = [x1 x2 x3]         element coordinates
 %         ey = [y1 y2 y3]

@@ -22,7 +22,7 @@ function [es,et,eci]=flw2i6s(ex,ey,ep,D,ed)
 %         et=[gx gy ;
 %             ... ..]               element gradients
 %
-%         eci=[ix1   iy1;            Gauss point  location vector
+%         eci=[ix1   iy1;           Gauss point  location vector
 %             ....     ;            nint: number of integration
 %             ix(nint) iy(nint)]          points
 %-------------------------------------------------------------
@@ -88,7 +88,7 @@ function [es,et,eci]=flw2i6s(ex,ey,ep,D,ed)
     indx=[ 2*i-1; 2*i ];
     detJ=det(JT(indx,:));
     if detJ<10*eps
-      disp('Jacobideterminanten lika med noll!')
+      disp('Jacobideterminant equal or less than zero!')
     end
     % JTinv=inv(JT(indx,:));
     % B=JTinv*dNr(indx,:);

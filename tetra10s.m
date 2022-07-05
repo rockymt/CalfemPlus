@@ -1,9 +1,11 @@
-  function [es,et,eci]=tetra10s(ex,ey,ez,ep,D,ed)
+  function [es,et,eci]=tetra10s_ccx(ex,ey,ez,ep,D,ed)
 % [es,et,eci]=tetra10s(ex,ey,ez,ep,D,ed)
 %-------------------------------------------------------------
 % PURPOSE
 %  Calculate element normal and shear stress for a
 %  a 10 node (tetra) isoparametric element.
+%  Arangement of nodes numbering follows the convention 
+%  of Calculix or Ansys
 %
 % INPUT:  ex = [x1 x2 x3 ... x10]
 %         ey = [y1 y2 y3 ... y10]  element coordinates
@@ -16,13 +18,19 @@
 %         ed = [u1 u2 ..u30;      element displacement vector
 %               ...........]      one row for each element
 %  
-% OUTPUT: es = [ sigx sigy sigz sigxy sigyz sigxz ;  
+% OUTPUT: es = [ sigx sigy sigz tauxy tauyz tauxz ;  
 %                  ......       ...               ] 
 %         element stress matrix, one row for each element  
+%         et = [ epsx epsy epsz gamxy gamyz gamxz ; 
+%                  ......       ...               ]; 
+%         element strain matrix， one row for each element
+%         eci=[ix1  iy1  iz1;             location vector
+%              ....          ;            nint: number of 
+%             ix(nint) iy(nint) iz(nint)]   integration points 
 %-------------------------------------------------------------
-% LAST MODIFIED: Yan LIU  2020-02-02
-% Copyright (c)  School of Civil Engineexing.
-%                Ludong Univexsity
+% LAST MODIFIED: Yan LIU  2020-02-04
+% Copyright (c)  School of Civil Engineering.
+%                Ludong University
 %-------------------------------------------------------------
   ir=ep(1);    
   if ir==1  
@@ -64,29 +72,29 @@
 
 %--------- shape functions -----------------------------------
   N(:,1)=2*(L1-0.5).*L1; N(:,5)=4*L1.*L2;
-  N(:,2)=2*(L2-0.5).*L2; N(:,6)=4*L1.*L3;
-  N(:,3)=2*(L3-0.5).*L3; N(:,7)=4*L1.*L4;
-  N(:,4)=2*(L4-0.5).*L4; N(:,8)=4*L2.*L3;
-  N(:,9)=4*L3.*L4;
-  N(:,10)=4*L2.*L4;
+  N(:,2)=2*(L2-0.5).*L2; N(:,6)=4*L2.*L3;
+  N(:,3)=2*(L3-0.5).*L3; N(:,7)=4*L1.*L3;
+  N(:,4)=2*(L4-0.5).*L4; N(:,8)=4*L1.*L4;
+  N(:,9)=4*L2.*L4;
+  N(:,10)=4*L3.*L4;
 
-  dNr(1:3:r2,1)=4*L1-1;    dNr(1:3:r2,2)=0;
-  dNr(1:3:r2,3)=0;    		dNr(1:3:r2,4)=-4*L4+1;
-  dNr(1:3:r2,5)=4.*L2;    	dNr(1:3:r2,6)=4*L3;
-  dNr(1:3:r2,7)=4.*(L4-L1); dNr(1:3:r2,8)=0;
-  dNr(1:3:r2,9)=-4.*L3;    	dNr(1:3:r2,10)=-4*L2;
+  dNr(1:3:r2,1)=4*L1-1;     dNr(1:3:r2,2)=0;
+  dNr(1:3:r2,3)=-4*L3+1;    dNr(1:3:r2,4)=0;
+  dNr(1:3:r2,5)=4*L2;    	dNr(1:3:r2,6)=-4*L2;
+  dNr(1:3:r2,7)=4*(L3-L1);  dNr(1:3:r2,8)=4*L4;
+  dNr(1:3:r2,9)=0;    	    dNr(1:3:r2,10)=-4*L4;
   
   dNr(2:3:r2+1,1)=0;  		dNr(2:3:r2+1,2)=4*L2-1;
-  dNr(2:3:r2+1,3)=0;  		dNr(2:3:r2+1,4)=-4*L4+1;
-  dNr(2:3:r2+1,5)=4*L1;  	dNr(2:3:r2+1,6)=0;
-  dNr(2:3:r2+1,7)=-4*L1;  	dNr(2:3:r2+1,8)=4*L3;
-  dNr(2:3:r2+1,9)=-4*L3;  	dNr(2:3:r2+1,10)=4*(L4-L2);
+  dNr(2:3:r2+1,3)=-4*L3+1;  dNr(2:3:r2+1,4)=0;
+  dNr(2:3:r2+1,5)=4*L1;  	dNr(2:3:r2+1,6)=4*(L3-L2);
+  dNr(2:3:r2+1,7)=-4*L1;  	dNr(2:3:r2+1,8)=0;
+  dNr(2:3:r2+1,9)=4*L4;  	dNr(2:3:r2+1,10)=-4*L4;
   
   dNr(3:3:r2+2,1)=0;  		dNr(3:3:r2+2,2)=0;
-  dNr(3:3:r2+2,3)=4*L3-1;  dNr(3:3:r2+2,4)=-4*L4+1;
-  dNr(3:3:r2+2,5)=0;  		dNr(3:3:r2+2,6)=4*L1;
-  dNr(3:3:r2+2,7)=-4*L1;  	dNr(3:3:r2+2,8)=4*L2;
-  dNr(3:3:r2+2,9)=4*(L4-L3); dNr(3:3:r2+2,10)=-4*L2;
+  dNr(3:3:r2+2,3)=-4*L3+1;  dNr(3:3:r2+2,4)=4*L4-1;
+  dNr(3:3:r2+2,5)=0;  		dNr(3:3:r2+2,6)=-4*L2;
+  dNr(3:3:r2+2,7)=-4*L1;  	dNr(3:3:r2+2,8)=4*L1;
+  dNr(3:3:r2+2,9)=4*L2;     dNr(3:3:r2+2,10)=4*(L3-L4);
 
 %--------- three dimensional case ----------------------------
   rowed=size(ed,1);

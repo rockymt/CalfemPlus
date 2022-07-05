@@ -11,7 +11,6 @@ function [es]=quad1Ds(ep,ed,xi)
 %
 % OUTPUT: es  = [N]       element force on xi
 %-------------------------------------------------------------
-
 % LAST MODIFIED: Yan LIU  2016-03-22
 % Copyright (c)  School of Civil Engineering.
 %                Ludong University

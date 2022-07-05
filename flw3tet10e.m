@@ -4,7 +4,8 @@ function [Ke,fe]=flw3tet10e(ex,ey,ez,ep,D,eq)
 %-------------------------------------------------------------
 % PURPOSE
 %  Calculate the stiffness matrix for a 10 node (tetra) element.
-%  
+%  Arangement of nodes numbering follows the convention 
+%  of Calculix or Ansys
 %
 % INPUT:   ex = [x1 x2 x3 ... x10]
 %          ey = [y1 y2 y3 ... y10]  element coordinates
@@ -19,14 +20,14 @@ function [Ke,fe]=flw3tet10e(ex,ey,ez,ep,D,eq)
 %          eq                           heat supply per unit 
 %                                       volume  
 %
-% OUTPUT: Ke : element stiffness matrix (10 x 10)
+% OUTPUT: Ke : element 'stiffness' matrix (10 x 10)
 %
 %         fe : element load vector (10 x 1)
 %-------------------------------------------------------------
 % LAST MODIFIED: Yan LIU  2020-02-04
-% Copyright (c)  School of Civil Engineexing.
-%                Ludong Univexsity
-%------------------------------------------------------------- 
+% Copyright (c)  School of Civil Engineering.
+%                Ludong University
+%-------------------------------------------------------------
 
   ir=ep(1);
   if ir==1  
@@ -68,29 +69,29 @@ function [Ke,fe]=flw3tet10e(ex,ey,ez,ep,D,eq)
   L1=gp(:,1);  L2=gp(:,2);  L3=gp(:,3);   L4=gp(:,4); r2=ngp*3;
 %--------- shape functions -----------------------------------
   N(:,1)=2*(L1-0.5).*L1; N(:,5)=4*L1.*L2;
-  N(:,2)=2*(L2-0.5).*L2; N(:,6)=4*L1.*L3;
-  N(:,3)=2*(L3-0.5).*L3; N(:,7)=4*L1.*L4;
-  N(:,4)=2*(L4-0.5).*L4; N(:,8)=4*L2.*L3;
-  N(:,9)=4*L3.*L4;
-  N(:,10)=4*L2.*L4;
+  N(:,2)=2*(L2-0.5).*L2; N(:,6)=4*L2.*L3;
+  N(:,3)=2*(L3-0.5).*L3; N(:,7)=4*L1.*L3;
+  N(:,4)=2*(L4-0.5).*L4; N(:,8)=4*L1.*L4;
+  N(:,9)=4*L2.*L4;
+  N(:,10)=4*L3.*L4;
 
-  dNr(1:3:r2,1)=4*L1-1;    dNr(1:3:r2,2)=0;
-  dNr(1:3:r2,3)=0;    		dNr(1:3:r2,4)=-4*L4+1;
-  dNr(1:3:r2,5)=4.*L2;    	dNr(1:3:r2,6)=4*L3;
-  dNr(1:3:r2,7)=4.*(L4-L1); dNr(1:3:r2,8)=0;
-  dNr(1:3:r2,9)=-4.*L3;    	dNr(1:3:r2,10)=-4*L2;
+  dNr(1:3:r2,1)=4*L1-1;     dNr(1:3:r2,2)=0;
+  dNr(1:3:r2,3)=-4*L3+1;    dNr(1:3:r2,4)=0;
+  dNr(1:3:r2,5)=4*L2;    	dNr(1:3:r2,6)=-4*L2;
+  dNr(1:3:r2,7)=4*(L3-L1);  dNr(1:3:r2,8)=4*L4;
+  dNr(1:3:r2,9)=0;    	    dNr(1:3:r2,10)=-4*L4;
   
   dNr(2:3:r2+1,1)=0;  		dNr(2:3:r2+1,2)=4*L2-1;
-  dNr(2:3:r2+1,3)=0;  		dNr(2:3:r2+1,4)=-4*L4+1;
-  dNr(2:3:r2+1,5)=4*L1;  	dNr(2:3:r2+1,6)=0;
-  dNr(2:3:r2+1,7)=-4*L1;  	dNr(2:3:r2+1,8)=4*L3;
-  dNr(2:3:r2+1,9)=-4*L3;  	dNr(2:3:r2+1,10)=4*(L4-L2);
+  dNr(2:3:r2+1,3)=-4*L3+1;  dNr(2:3:r2+1,4)=0;
+  dNr(2:3:r2+1,5)=4*L1;  	dNr(2:3:r2+1,6)=4*(L3-L2);
+  dNr(2:3:r2+1,7)=-4*L1;  	dNr(2:3:r2+1,8)=0;
+  dNr(2:3:r2+1,9)=4*L4;  	dNr(2:3:r2+1,10)=-4*L4;
   
   dNr(3:3:r2+2,1)=0;  		dNr(3:3:r2+2,2)=0;
-  dNr(3:3:r2+2,3)=4*L3-1;  dNr(3:3:r2+2,4)=-4*L4+1;
-  dNr(3:3:r2+2,5)=0;  		dNr(3:3:r2+2,6)=4*L1;
-  dNr(3:3:r2+2,7)=-4*L1;  	dNr(3:3:r2+2,8)=4*L2;
-  dNr(3:3:r2+2,9)=4*(L4-L3); dNr(3:3:r2+2,10)=-4*L2;
+  dNr(3:3:r2+2,3)=-4*L3+1;  dNr(3:3:r2+2,4)=4*L4-1;
+  dNr(3:3:r2+2,5)=0;  		dNr(3:3:r2+2,6)=-4*L2;
+  dNr(3:3:r2+2,7)=-4*L1;  	dNr(3:3:r2+2,8)=4*L1;
+  dNr(3:3:r2+2,9)=4*L2;     dNr(3:3:r2+2,10)=4*(L3-L4);
 
   Ke=zeros(10,10);  
   fe=zeros(10,1);

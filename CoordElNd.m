@@ -4,7 +4,7 @@
 % PURPOSE
 %  Extract the coordinates of element nodes
 %
-% INPUT: El : El : the element connectivity matrix
+% INPUT: El : the element-node connectivity matrix
 %             example:elementNumber nodeNumber
 %             [1            n1 n2;
 %              2            n3 n2;...]
@@ -14,9 +14,8 @@
 %               x2 (y2 z2);...];
 %
 % OUTPUT:  Ex,Ey,Ez : element coordinate matrices
-%         Ex=[x1 x2 ...xnen;    one row for each element
-%             ...     ...  ;
-%             nel     ...  ]  
+%          Ex=[x1 x2 ...xnen;    one row for each element
+%              ...     ...  ]; 
 %             dim= nel x nen ;   nel:number of elemnts 
 %-------------------------------------------------------------
 

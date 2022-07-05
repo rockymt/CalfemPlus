@@ -3,7 +3,8 @@ function [Ke fe]=tin1e(ep,eq);
 %-------------------------------------------------------------
 % PURPOSE
 %  Compute element stiffness matrix for 1D tin element.
-%
+%  Ref: Chap. 10 of Chandrupatla TR, Belegundu AD. 
+%       Introduction to Finite Elements in Engineering, 4th edition. 
 % INPUT:  ep = [ep1 ep2];   ep1: conduction stiffness; 
 %                           ep2: convection stiffness;
 %

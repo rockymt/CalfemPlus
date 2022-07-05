@@ -1,6 +1,6 @@
 function [Ke,fe]=flw2i6e(ex,ey,ep,D,eq)
 % Ke=flw2i6e(ex,ey,ep,D)
-% [Ke,fe]=flw2i8e(ex,ey,ep,D,eq)
+% [Ke,fe]=flw2i6e(ex,ey,ep,D,eq)
 %-------------------------------------------------------------
 % PURPOSE
 %  Compute element stiffness (conductivity)
@@ -21,8 +21,8 @@ function [Ke,fe]=flw2i6e(ex,ey,ep,D,eq)
 %         fe :  element load vector (6 x 1)
 %-------------------------------------------------------------
 % LAST MODIFIED: Yan LIU  2020-09-30
-% Copyright (c)  School of Civil Engineexing.
-%                Ludong Univexsity
+% Copyright (c)  School of Civil Engineering.
+%                Ludong University
 %------------------------------------------------------------- 
   t=ep(1); ir=ep(2);   
   if ir==1  
@@ -83,7 +83,7 @@ function [Ke,fe]=flw2i6e(ex,ey,ep,D,eq)
     indx=[ 2*i-1; 2*i ];
     detJ=det(JT(indx,:));
     if detJ<10*eps
-      disp('Jacobideterminanten lika med noll!')
+      disp('Jacobideterminant equal or less than zero!')
     end
     % JTinv=inv(JT(indx,:));
     % B=JTinv*dNr(indx,:);

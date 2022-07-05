@@ -30,11 +30,11 @@ The list of elements supplemented by CalfemPlus is shown in Table 1.
 |quad1de 			|quad1ds 	|one-dimensional quadratic element                   |
 |flw2i6e   			|flw2i6s 	|planar six-node triangular heat transfer element    |
 |plani6e   			|plani6s 	|planar six-node triangular solid element            |
-|tetra4e 			|tetra4s 	|space tetrahedral element with four nodes    |
+|tetra4e 			|tetra4s 	|space four-node tetrahedral element   |
 |flw3tet10e 		|flw3tet10s |space ten-node tetrahedron heat transfer element    |
-|tetra10e 			|tetra10s 	|space tetrahedral element with ten nodes     |
-|flw3i20e 			|flw3i20s 	|space twenty node hexahedron heat transfer element  |
-|soli20e 			|soli20s 	|space twenty node hexahedron solid element         |
+|tetra10e 			|tetra10s 	|space ten-node tetrahedral element     |
+|flw3i20e 			|flw3i20s 	|space twenty-node hexahedron heat transfer element  |
+|soli20e 			|soli20s 	|space twenty-node hexahedron solid element         |
 |axisyme 			|axisyms 	| axisysymmetrical three-node triangle element|
 |tin1e 				|- 			|one-dimensional heat dissipation element            |
 

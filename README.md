@@ -19,7 +19,7 @@ The input of the function are the element-node connection relation matrix El, el
 
 The function of DofRaw is to set the connection relation table between nodes and the overall degree of freedom for each element type. If the user defines a new element and calls ExtractElInfo, the corresponding information of the element needs to be added to this function. The function of CoordElNd is to extract coordinate vectors of x, y and z of a certain group of elements. This module requires nodes and cells to be numbered consecutively starting with the number 1.
 
-### extended elements
+### Extended elements
 
 The list of elements supplemented by CalfemPlus is shown in Table 1. 
 
@@ -38,7 +38,7 @@ The list of elements supplemented by CalfemPlus is shown in Table 1.
 |axisyme 			|axisyms 	| axisysymmetrical three-node triangle element|
 |tin1e 				|- 			|one-dimensional heat dissipation element            |
 
-### other tools
+### Other tools
 Additional functions in CalfemPlus are listed in Table 2.
 Table 2 Additional functions
 |Function Name |Function Description |Adaptable element|
